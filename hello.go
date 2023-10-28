@@ -5,44 +5,19 @@ import (
 )
 
 func main() {
-	a := []int{10, 20, 30}
-	fmt.Println(a)
-	a = push(a, 1000)
-	fmt.Println(a)
-	a = pop(a)
-	fmt.Println(a)
-	a = unshift(a, 1000)
-	fmt.Println(a)
-	a = shift(a)
-	fmt.Println(a)
-	a = insert(a, 1000, 2)
-	fmt.Println(a)
-	a = remove(a, 2)
-	fmt.Println(a)
+	m := []string{}
+	m, _ = push(m, "apple")
+	m, _ = push(m, "banana")
+	m, _ = push(m, "orange")
+	fmt.Println(m)
+	m, v := pop(m)
+	fmt.Println("get "+v+" ->", m)
 }
 
-func push(a []int, v int) []int {
-	return append(a, v)
+func push(a []string, v string) ([]string, int) {
+	return append(a, v), len(a)
 }
 
-func pop(a []int) []int {
-	return a[:len(a)-1]
-}
-
-func unshift(a []int, v int) []int {
-	return append([]int{v}, a...)
-}
-func shift(a []int) []int {
-	return a[1:]
-}
-
-func insert(a []int, v int, p int) []int {
-	a = append(a, 0)
-	a = append(a[:p+1], a[p:len(a)-1]...)
-	a[p] = v
-	return a
-}
-
-func remove(a []int, p int) []int {
-	return append(a[:p], a[p+1:]...)
+func pop(a []string) ([]string, string) {
+	return a[:len(a)-1], a[len(a)-1]
 }
