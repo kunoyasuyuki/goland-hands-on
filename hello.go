@@ -4,14 +4,16 @@ import "fmt"
 
 func main() {
 	n := 123
-	p := &n
-	m := 10000
-	p2 := &m
-	fmt.Printf("p  value:%d, address:%p\n", *p, p)
-	fmt.Printf("p2 value:%d, address:%p\n", *p2, p2)
-	pb := p
-	p = p2
-	p2 = pb
-	fmt.Printf("p  value:%d, address:%p\n", *p, p)
-	fmt.Printf("p2 value:%d, address:%p\n", *p2, p2)
+	fmt.Printf("value:%d.\n", n)
+	change1(n)
+	fmt.Printf("value:%d.\n", n)
+	change2(&n)
+	fmt.Printf("value:%d.\n", n)
+}
+
+func change1(n int) {
+	n *= 2
+}
+func change2(n *int) {
+	*n *= 2
 }
