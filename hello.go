@@ -8,22 +8,17 @@ type Mydata struct {
 	Data []int
 }
 
-func main() {
-	taro := Mydata{
-		"Taro",
-		[]int{10, 20, 30},
-	}
-	fmt.Println(taro)
-	taro = rev(taro)
-	fmt.Println(taro)
+// PrintData is println all data.
+func (md Mydata) PrintData() {
+	fmt.Println("*** Mydata ***")
+	fmt.Println("Name: ", md.Name)
+	fmt.Println("Data: ", md.Data)
+	fmt.Println("*** end ***")
 }
 
-func rev(md Mydata) Mydata {
-	od := md.Data
-	nd := []int{}
-	for i := len(od) - 1; i >= 0; i-- {
-		nd = append(nd, od[i])
+func main() {
+	taro := Mydata{
+		"Hanako", []int{98, 76, 54, 32, 10},
 	}
-	md.Data = nd
-	return md
+	taro.PrintData()
 }
