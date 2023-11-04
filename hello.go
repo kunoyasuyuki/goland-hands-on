@@ -1,23 +1,16 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
+
+type Mydata struct {
+	Name string
+	Data []int
+}
 
 func main() {
-	m := []string{}
-	m, _ = push(m, "apple")
-	m, _ = push(m, "banana")
-	m, _ = push(m, "orange")
-	fmt.Println(m)
-	m, v := pop(m)
-	fmt.Println("get "+v+" ->", m)
-}
-
-func push(a []string, v string) ([]string, int) {
-	return append(a, v), len(a)
-}
-
-func pop(a []string) ([]string, string) {
-	return a[:len(a)-1], a[len(a)-1]
+	taro := new(Mydata)
+	fmt.Println(taro)
+	taro.Name = "Taro"
+	taro.Data = make([]int, 5, 5)
+	fmt.Println(taro)
 }
