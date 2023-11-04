@@ -3,17 +3,14 @@ package main
 import "fmt"
 
 func main() {
-	n := 123
-	fmt.Printf("value:%d.\n", n)
-	change1(n)
-	fmt.Printf("value:%d.\n", n)
-	change2(&n)
-	fmt.Printf("value:%d.\n", n)
+	ar := []int{10, 20, 30}
+	fmt.Println(ar)
+	initial(&ar)
+	fmt.Println(ar)
 }
 
-func change1(n int) {
-	n *= 2
-}
-func change2(n *int) {
-	*n *= 2
+func initial(ar *[]int) {
+	for i := 0; i < len(*ar); i++ {
+		(*ar)[i] = 0
+	}
 }
