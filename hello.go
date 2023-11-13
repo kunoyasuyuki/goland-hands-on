@@ -1,29 +1,33 @@
 package main
 
-import (
-	"fmt"
-	"sync"
-)
+import "fmt"
+
+type Speaker interface {
+	Speak() error
+}
+
+type Dog struct{}
+
+func (d *Dog) Speak() error {
+	fmt.Println("BowWow")
+	return nil
+}
+
+type Cat struct{}
+
+func (c *Cat) Speak() error {
+	fmt.Println("Meow")
+	return nil
+}
+
+func DoSpeak(s Speaker) error {
+	return s.Speak()
+}
 
 func main() {
-	n := 0
-	var wg sync.WaitGroup
-	wg.Add(2)
+	dog := Dog{}
+	DoSpeak(&dog) // "BowWow"が表示される
 
-	go func() {
-		defer wg.Done()
-		for i := 0; i < 1000; i++ {
-			n++
-		}
-	}()
-
-	go func() {
-		defer wg.Done()
-		for i := 0; i < 1000; i++ {
-			n++
-		}
-	}()
-
-	wg.Wait()
-	fmt.Println(n)
+	cat := Cat{}
+	DoSpeak(&cat) // "Meow"が表示される
 }
